@@ -21,34 +21,58 @@ require_once __DIR__ . '/PallaGiochi.php';
 require_once __DIR__ . '/AwayHomeCucce.php';
 require_once __DIR__ . '/LegnoCucce.php';
 require_once __DIR__ . '/FlexCucce.php';
-
-
-
+//sezione utente
+require_once __DIR__ . '/UtenteAnonimo.php';
+require_once __DIR__ . '/UtenteRegistrato.php';
 
 
 
 //vengono riportati solo le classi figlie
 //sezione cibo
 $crocchetteCibo = new CrocchetteCibo('Crocchete di omega-3',2);
-var_dump($crocchetteCibo);
+//var_dump($crocchetteCibo);
 $bocconciniCibo = new BocconciniCibo('Bocconcini di pollo ',4);
-var_dump($bocconciniCibo);
+//var_dump($bocconciniCibo);
 $dentastixCibo = new DentastixCibo('Dentastix al mentolo ',10);
-var_dump($dentastixCibo);
+//var_dump($dentastixCibo);
 
 //sezione giochi
 $funeGiochi = new FuneGiochi('Fune','Pet Animal Planet');
-var_dump($funeGiochi);
+//var_dump($funeGiochi);
 $boomerangGiochi = new BoomerangGiochi('Boomerang','Pet Planet');
-var_dump($boomerangGiochi);
+//var_dump($boomerangGiochi);
 $pallaGiochi = new PallaGiochi(' Pet Soccer Ball','Pet Ball Play');
-var_dump($pallaGiochi);
+//var_dump($pallaGiochi);
 
 //sezione cucce
 $awayHomeCucce = new AwayHomeCucce('Beach-Forest-Mountain','Policarbonato','4x4');
-var_dump($awayHomeCucce);
+//var_dump($awayHomeCucce);
 $legnoCucce = new LegnoCucce('ComfortablePlace','Wood','6x3');
-var_dump($legnoCucce);
+//var_dump($legnoCucce);
 $flexCucce = new FlexCucce('ElasticPlace','Elastic-Plexiglass','2x8');
-var_dump($flexCucce);
+//var_dump($flexCucce);
+
+//sezione utenti
+$utenteAnonimo = new UtenteAnonimo('Chiara','mini@gmail.com');
+//L'utente aggiunge tramite la funzione il prodotto al suo carrello
+$utenteAnonimo->prendiProdotto($crocchetteCibo);
+$utenteAnonimo->prendiProdotto($legnoCucce);
+$utenteAnonimo->prendiProdotto($boomerangGiochi);
+//var_dump($utenteAnonimo);
+
+
+$utenteRegistrato = new UtenteRegistrato('Luigi','zinocapa@gmail.com');
+//L'utente aggiunge tramite la funzione il prodotto al suo carrello
+$utenteRegistrato->prendiProdotto($dentastixCibo);
+$utenteRegistrato->prendiProdotto($flexCucce);
+$utenteRegistrato->prendiProdotto($boomerangGiochi);
+//var_dump($utenteRegistrato);
+
+//condizione di accertamento pagamento riuscito
+if($utenteAnonimo->pagamentoCash() === 'Pagamente accettato'){
+    echo 'Grazie per la vostra scelta.';
+}
+if($utenteRegistrato->pagamentoCash() === 'Pagamente accettato'){
+    echo 'Grazie per la vostra scelta, pagamento andato a buon fine.';
+}
 ?>
