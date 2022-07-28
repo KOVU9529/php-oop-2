@@ -1,4 +1,7 @@
 <?php
+require_once __DIR__ . '/Carta.php'; 
+var_dump($carta->conto);
+
 class Utente {
     public $nome;
     public $email;
