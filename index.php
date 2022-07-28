@@ -69,10 +69,10 @@ $utenteRegistrato->prendiProdotto($boomerangGiochi);
 //var_dump($utenteRegistrato);
 
 //condizione di accertamento pagamento riuscito
-if($utenteAnonimo->pagamentoCash() === 'Pagamente accettato'){
+if($utenteAnonimo->pagamentoCash() === 'Pagamento accettato'){
     echo 'Grazie per la vostra scelta.';
 }
-if($utenteRegistrato->pagamentoCash() === 'Pagamente accettato'){
+if($utenteRegistrato->pagamentoCash() === 'Pagamento accettato'){
     echo 'Grazie per la vostra scelta, pagamento andato a buon fine.';
 }
 ?>

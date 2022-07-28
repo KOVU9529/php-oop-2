@@ -14,6 +14,7 @@ class Utente {
     //Funzione singolo prondotto
     public function prendiProdotto($prodotto){
         $this-> prodottiSelezionati[]=$prodotto;
+        //var_dump($prodotto);
     }
     public function prodotto(){
         return $this-> prodottiSelezionati;
@@ -26,7 +27,7 @@ class Utente {
             $somma += $prodotto -> prezzo;
         }
         //differza con lo sconto
-        $somma -= $somma * $this -> $sconto / 100;
+        $somma -= $somma * $this->sconto / 100;
         return $somma;
     }
     public function pagamentoCash(){
@@ -34,10 +35,10 @@ class Utente {
         //le condizioni di riuscita del pagamento
         $pagamento = $this-> calcolarePrezzo();
         var_dump($pagamento);
-        if($this->saldo < $pagamento){
+        if($this-> saldo < $pagamento){
             die('pagamento rifiutato');
         }else{
-            return 'Pagamente accettato';
+            return 'Pagamento accettato';
         }
     }
 }
