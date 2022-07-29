@@ -1,6 +1,10 @@
 <?php
 class Carta{
-    public $conto=2000;
+    public $saldo=0;
+    public function __construct($_saldo){
+        $this->saldo=$_saldo;
+
+    }
+   
 }
-$carta= new Carta;
 ?>

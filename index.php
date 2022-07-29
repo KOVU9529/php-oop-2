@@ -24,7 +24,8 @@ require_once __DIR__ . '/FlexCucce.php';
 //sezione utente
 require_once __DIR__ . '/UtenteAnonimo.php';
 require_once __DIR__ . '/UtenteRegistrato.php';
-
+//sezione carta
+require_once __DIR__ . '/Carta.php';
 
 
 //vengono riportati solo le classi figlie
@@ -68,11 +69,16 @@ $utenteRegistrato->prendiProdotto($flexCucce);
 $utenteRegistrato->prendiProdotto($boomerangGiochi);
 //var_dump($utenteRegistrato);
 
+//carta prepagata
+//imposto il valore del saldo per soddisfare o meno il pagamento
+$carta= new Carta(100);
+//var_dump($carta->saldo);
+
 //condizione di accertamento pagamento riuscito
-if($utenteAnonimo->pagamentoCash() === 'Pagamento accettato'){
+if($utenteAnonimo->pagamentoCash($carta) === 'Pagamento accettato'){
     echo 'Grazie per la vostra scelta.';
 }
-if($utenteRegistrato->pagamentoCash() === 'Pagamento accettato'){
+if($utenteRegistrato->pagamentoCash($carta) === 'Pagamento accettato'){
     echo 'Grazie per la vostra scelta, pagamento andato a buon fine.';
 }
 ?>

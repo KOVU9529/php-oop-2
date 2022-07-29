@@ -1,7 +1,4 @@
 <?php
-require_once __DIR__ . '/Carta.php'; 
-var_dump($carta->conto);
-
 class Utente {
     public $nome;
     public $email;
@@ -33,12 +30,13 @@ class Utente {
         $somma -= $somma * $this->sconto / 100;
         return $somma;
     }
-    public function pagamentoCash(){
+    //Aggiungo i valori relativi alla carta
+    public function pagamentoCash($carta){
         //imposto il calcolo del pagamento e 
         //le condizioni di riuscita del pagamento
         $pagamento = $this-> calcolarePrezzo();
         var_dump($pagamento);
-        if($this-> saldo < $pagamento){
+        if($carta->saldo < $pagamento){
             die('pagamento rifiutato');
         }else{
             return 'Pagamento accettato';
