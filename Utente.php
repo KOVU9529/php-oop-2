@@ -35,9 +35,11 @@ class Utente {
         //imposto il calcolo del pagamento e 
         //le condizioni di riuscita del pagamento
         $pagamento = $this-> calcolarePrezzo();
-        var_dump($pagamento);
+        //var_dump($pagamento);
         if($carta->saldo < $pagamento){
-            die('pagamento rifiutato');
+            //inserisco una nuova via nel programma 
+            //se il pagamento non è andato a buon fine
+            throw new Exception ('Gentile utente, Pagamento rifiutato');
         }else{
             return 'Pagamento accettato';
         }

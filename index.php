@@ -71,14 +71,33 @@ $utenteRegistrato->prendiProdotto($boomerangGiochi);
 
 //carta prepagata
 //imposto il valore del saldo per soddisfare o meno il pagamento
-$carta= new Carta(100);
+
 //var_dump($carta->saldo);
+//Aggiunta trait
+$carta= new TraitProva(10);
+$carta-> accettazione();
 
 //condizione di accertamento pagamento riuscito
-if($utenteAnonimo->pagamentoCash($carta) === 'Pagamento accettato'){
-    echo 'Grazie per la vostra scelta.';
+//inserisco un try-catch
+try{
+    if($utenteAnonimo->pagamentoCash($carta) === 'Pagamento accettato'){
+        echo 'Grazie per la vostra scelta.';
+    }
+}catch(Exception $pagamento){
+    //Salvo il messagio (errore) nel mia console
+    error_log($pagamento->getMessage());
+    //Stampo un messaggio in pagina più accessibile all'utente
+    echo 'L\'operazione dai lei richiesta non è andata a buon fine, si prega di controllare la carta e RIPROVARE. ';
 }
-if($utenteRegistrato->pagamentoCash($carta) === 'Pagamento accettato'){
-    echo 'Grazie per la vostra scelta, pagamento andato a buon fine.';
+try{
+    if($utenteRegistrato->pagamentoCash($carta) === 'Pagamento accettato'){
+        echo 'Grazie per la vostra scelta, pagamento andato a buon fine.';
+    }
+}catch(Exception $pagamento){
+    //Salvo il messagio (errore) nel mia console
+    error_log($pagamento->getMessage());
+    //Stampo un messaggio in pagina più accessibile all'utente
+    echo 'L\'operazione dai lei richiesta non è andata a buon fine, si prega di controllare la carta e RIPROVARE. ';
 }
+
 ?>
